@@ -3,7 +3,7 @@ import random
 
 def draw_floor():
     screen.blit(floor, (floor_x,90))
-    screen.blit(floor, (floor_x+ 10,90))
+    screen.blit(floor, (floor_x+ 450,90))
 pygame.init()
 
 #screen size
@@ -22,6 +22,9 @@ bk_img = pygame.transform.scale(bk_img , (400,650))
 floor = pygame.image.load('floor.png')
 floor = pygame.transform.scale(floor, (400,90))
 floor_x = 800
+#floor2
+floor2 = pygame.image.load('floor2.png')
+floor2 = pygame.transform.scale(floor2,(800,90))
 #bird
 bird_img = pygame.image.load('bird1.png')
 bird_x = 50
@@ -41,10 +44,11 @@ while play == True:
     screen.fill((0, 0, 0))
     screen.blit(bk_img,(0, 0))
     screen.blit(floor, (0,560))
-    #moving the bk
-    floor_x -= 1
-    if floor_x == 0:
-        floor_x = floor_x
+    screen.blit(floor2, (floor_x, 560))
+    draw_floor()
+    if floor_x < -450:
+        floor_x = 0
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             play = False   
